@@ -1,5 +1,5 @@
 ##Music2Lastfm  
-`虾米`和`网易云`播放记录到lastfm，支持同步收藏
+同步`虾米`和`网易云`播放记录到lastfm，支持同步收藏  
 [安装](https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.user.js)
 
 ###使用说明  
