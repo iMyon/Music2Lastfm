@@ -13,5 +13,5 @@
 // @icon        http://www.last.fm/static/images/whatsnew/trackmymusic/1-desktop-icon.png
 // @downloadURL https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.user.js
 // @updateURL   https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.meta.js
-// @version     0.1
+// @version     0.1.1
 // ==/UserScript==

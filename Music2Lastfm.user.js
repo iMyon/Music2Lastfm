@@ -1,4 +1,4 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name        Music2Lastfm
 // @namespace   myon<myon.cn@gmail.com>
 // @author      Myon<myon.cn@gmail.com>
@@ -13,7 +13,7 @@
 // @icon        http://www.last.fm/static/images/whatsnew/trackmymusic/1-desktop-icon.png
 // @downloadURL https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.user.js
 // @updateURL   https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.meta.js
-// @version     0.1
+// @version     0.1.1
 // ==/UserScript==
 
 
@@ -204,9 +204,11 @@ for(var item in sites){
       mutations.forEach(function(mutation) {
         var flag = sites[item].isPlaying ? sites[item].isPlaying() : true;
         if(flag){//当前处于播放状态才记录
+        	//切换歌曲时记录
+          if(window.history_data) lastfmUtils.scrobble(window.history_data);
           var data = sites[item].getData();
           lastfmUtils.updateNowPlaying(data);
-          lastfmUtils.scrobble(data);
+          window.history_data = data;
         }
       });
     });
