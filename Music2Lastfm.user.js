@@ -13,7 +13,7 @@
 // @icon        http://www.last.fm/static/images/whatsnew/trackmymusic/1-desktop-icon.png
 // @downloadURL https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.user.js
 // @updateURL   https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.meta.js
-// @version     0.1.1
+// @version     0.1.2
 // ==/UserScript==
 
 
@@ -42,8 +42,8 @@ var sites = {
       data.track = document.querySelector("#J_trackName").title;
       data.artist = document.querySelector("#J_trackName+a").title;
       var t = document.querySelector(".ui-row-item.ui-track-item.ui-track-current .ui-row-item-column.c3 a");
-      if(t) data.album = t.innerHTML;
-      data.duration = time2second(document.querySelector("#J_durationTime").innerHTML);
+      if(t) data.album = t.textContent;
+      data.duration = time2second(document.querySelector("#J_durationTime").textContent);
       data.timestamp = ~~(new Date().getTime()/1000);
       return data;
     },
@@ -204,7 +204,7 @@ for(var item in sites){
       mutations.forEach(function(mutation) {
         var flag = sites[item].isPlaying ? sites[item].isPlaying() : true;
         if(flag){//当前处于播放状态才记录
-        	//切换歌曲时记录
+          //切换歌曲时记录
           if(window.history_data) lastfmUtils.scrobble(window.history_data);
           var data = sites[item].getData();
           lastfmUtils.updateNowPlaying(data);
