@@ -13,7 +13,7 @@
 // @icon        http://www.last.fm/static/images/whatsnew/trackmymusic/1-desktop-icon.png
 // @downloadURL https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.user.js
 // @updateURL   https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.meta.js
-// @version     0.1.2
+// @version     0.1.3
 // ==/UserScript==
 
 
@@ -203,10 +203,13 @@ for(var item in sites){
     var observer = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
         var flag = sites[item].isPlaying ? sites[item].isPlaying() : true;
+        var data = sites[item].getData();
         if(flag){//当前处于播放状态才记录
           //切换歌曲时记录
-          if(window.history_data) lastfmUtils.scrobble(window.history_data);
-          var data = sites[item].getData();
+          if(window.history_data){
+            if(!(window.history_data.track==data.track && window.history_data.artist == data.artist))
+              lastfmUtils.scrobble(window.history_data);
+          }
           lastfmUtils.updateNowPlaying(data);
           window.history_data = data;
         }
