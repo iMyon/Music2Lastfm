@@ -13,7 +13,7 @@
 // @icon        https://static-web.last.fm/static/images/favicon.702b239b6194.ico
 // @downloadURL https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.user.js
 // @updateURL   https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.meta.js
-// @version     0.1.4
+// @version     0.1.5
 // ==/UserScript==
 
 
@@ -207,6 +207,7 @@ for(var item in sites){
       mutations.forEach(function(mutation) {
         var flag = sites[item].isPlaying ? sites[item].isPlaying() : true;
         var data = sites[item].getData();
+        data.duration = data.duration || 250;
         if(flag){//当前处于播放状态才记录
           //切换歌曲时记录
           if(window.history_data){

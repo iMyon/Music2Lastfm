@@ -13,5 +13,5 @@
 // @icon        https://static-web.last.fm/static/images/favicon.702b239b6194.ico
 // @downloadURL https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.user.js
 // @updateURL   https://github.com/iMyon/Music2Lastfm/raw/master/Music2Lastfm.meta.js
-// @version     0.1.4
+// @version     0.1.5
 // ==/UserScript==
